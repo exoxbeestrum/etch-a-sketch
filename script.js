@@ -1,7 +1,7 @@
 /* Last updated: 3/14/2023   */
 
 //DECLARE VARIABLES
-const e = 64; //GRID SIZE
+const e = 8; //GRID SIZE
 
 //FUNCTION buildGrid();
 function buildGrid(e) {
