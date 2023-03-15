@@ -10,14 +10,21 @@ body {
 }
 
 .row {
-  border-left: 1px solid #ccc;
+  border-left: 1px solid #eee;
   display: grid;
   justify-content: center;
 }
 
+#container > .row:first-child > .column {
+  border-top: 1px solid #eee;
+}
+.row > .column:first-child {
+  border-left: 1px solid #eee;
+}
+
 .column {
-  border-bottom: 1px solid #ccc;
-  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #eee;
+  border-right: 1px solid #eee;
   cursor: pointer;
 }
 
