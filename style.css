@@ -8,9 +8,11 @@ body {
 }
 
 #container {
+  background: #000 url("imgs/bg_pattern.gif") center repeat;
   display: grid;
   align-content: center;
   height: 100vh;
+  position: relative;
 }
 
 .row {
@@ -19,7 +21,8 @@ body {
   justify-content: center;
 }
 
-#container > .row:first-child > .column {
+#container .row:first-child {
+  background: red;
   border-top: 1px solid #eee;
 }
 .row > .column:first-child {
@@ -27,6 +30,7 @@ body {
 }
 
 .column {
+  background: #ddd;
   border-bottom: 1px solid #eee;
   border-right: 1px solid #eee;
   cursor: pointer;
@@ -35,4 +39,11 @@ body {
 .overlay {
   height: 100%;
   width: 100%;
+}
+
+#options {
+  background: #666;
+  min-width: 10vw;
+  min-height: 20vh;
+  position: absolute;
 }
