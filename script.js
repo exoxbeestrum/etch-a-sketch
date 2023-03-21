@@ -1,7 +1,7 @@
 /* Last updated: 3/14/2023   */
 
 //DECLARE VARIABLES
-const e = 8; //GRID SIZE
+const e = 16; //GRID SIZE
 
 //FUNCTION buildGrid();
 function buildGrid(e) {
@@ -11,9 +11,9 @@ function buildGrid(e) {
 
   //SQUARE THE HEIGHT, WIDTH
   if (winH >= winW) {
-    winH = winW;
+    winH = winW - (winW * .2); //20% SPACING
   } else {
-    winW = winH;
+    winW = winH - (winH * .2); //20% SPACING
   }
 
   for (let i = 0; i < e; i++) {
