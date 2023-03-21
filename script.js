@@ -5,15 +5,14 @@ const e = 16; //GRID SIZE
 
 //FUNCTION buildGrid();
 function buildGrid(e) {
-  const container = document.getElementById("container");
   let winH = window.innerHeight;
   let winW = window.innerWidth;
 
   //SQUARE THE HEIGHT, WIDTH
   if (winH >= winW) {
-    winH = winW - (winW * .2); //20% SPACING
+    winH = winW - winW * 0.2; //ADD 20% SPACING
   } else {
-    winW = winH - (winH * .2); //20% SPACING
+    winH = winH - winH * 0.2; //ADD 20% SPACING
   }
 
   for (let i = 0; i < e; i++) {
