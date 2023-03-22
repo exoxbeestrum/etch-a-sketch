@@ -31,7 +31,7 @@ function buildGrid(e) {
       column.className = "column";
       row.appendChild(column);
     }
-    document.getElementById("container").appendChild(row);
+    document.getElementById("gridbox").appendChild(row);
   }
 }
 //END FUNCTION buildGrid();
@@ -98,3 +98,53 @@ document.querySelectorAll(".column").forEach((item, index) => {
   });
 });
 //END ETCH-A-SKETCH ON MOUSEOVER
+
+//DRAGGABLE SCORECARD FUNCTION
+//VIA https://www.w3schools.com/howto/howto_js_draggable.asp
+let elem = document.getElementById("options");
+
+function dragElement(elem) {
+  let pos1 = 0,
+    pos2 = 0,
+    pos3 = 0,
+    pos4 = 0;
+  if (document.getElementById("grabber")) {
+    //DECLARE THE DRAGGABLE HANDLE
+    document.getElementById("grabber").onmousedown = dragMouseDown;
+  } else {
+    //OTHERWISE, THE WHOLE THING IS GRABBABLE
+    elem.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    //GET MOUSE POSITION AT STARTUP
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    //CALL FUNCTION WHEN MOUSE MOVES
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    //CALCULATE NEW CURSOR POSITION
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    //SET ELEM NEW POSITION
+    elem.style.top = elem.offsetTop - pos2 + "px";
+    elem.style.left = elem.offsetLeft - pos1 + "px";
+  }
+
+  function closeDragElement() {
+    //STOP MOVING ON MOUSE RELEASE
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+//DRAG THE SCORECARD
+dragElement(elem);
