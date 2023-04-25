@@ -5,8 +5,8 @@ html {
 }
 
 body {
-  background-color: #000;
-  font-family: "Comfortaa", cursive;"
+  background: #000;
+  font: 1em normal "Comfortaa", cursive;"
   margin: 0;
   padding: 0;
 }
@@ -59,4 +59,80 @@ body {
 .overlay {
   height: 100%;
   width: 100%;
+}
+
+/* CHOOSE A NUMBER  */
+#msg_options {
+  font: italic 1em Arial, Helvetica, sans-serif;
+  min-width: 336px;
+  position: absolute;
+}
+#msg_bubble {
+  background: rgba(53, 120, 51, 1);
+  border-radius: 12px;
+  box-shadow: 3px 3px 6px rgb(0, 0, 0, 0.25);
+  color: #fff;
+  min-height: 96px;
+  padding: 0 12px 6px;
+  position: relative;
+  text-align: center;
+  z-index: 1;
+}
+#msg_drag {
+  background: rgba(57, 163, 45, 1);
+  border-bottom: dashed 1px #347732;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  cursor: all-scroll;
+  margin: 0 -12px 12px;
+  padding: 6px 0;
+  position: relative;
+}
+#msg_drag > h4 {
+  margin: 0;
+}
+#msg_prompt {
+  height: 36px;
+  position: relative;
+  z-index: 100;
+}
+input,
+button {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid #347732;
+  border-radius: 4px;
+  color: #fff;
+  min-height: 32px;
+  margin: 0;
+  padding: 0 10px;
+  position: relative;
+  top: 0;
+  width: 240px;
+}
+button {
+  top: 2px;
+  width: 44px;
+}
+#msg_error {
+  background: rgba(57, 163, 45, 1);
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  box-shadow: 3px 3px 6px rgb(0, 0, 0, 0.25);
+  color: #fff;
+  font-style: normal;
+  left: 0;
+  height: auto;
+  margin: 0 12px;
+  padding: 12px;
+  position: relative;
+  top: -50px;
+  width: 286px;
+  z-index: 0;
+}
+
+#reset {
+  background: #f00;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
