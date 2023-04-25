@@ -9,13 +9,32 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!-- GRID -->
     <div id="container">
-      <div id="options">
-        <div id="grabber">GRAB</div>
-        <button onclick="myFunction()">Try it</button>
-      </div>
       <div id="gridbox"></div>
     </div>
+
+    <!-- GRID SIZE OPTION -->
+    <div id="msg_options">
+      <div id="msg_bubble">
+        <div id="msg_drag">
+          <h4>Grid Size</h4>
+        </div>
+        <div id="msg_prompt">
+          <input
+            type="text"
+            id="text"
+            value="Enter a number between 1 & 100."
+          />
+          <button id="submit">&#128072;</button>
+        </div>
+      </div>
+      <div id="msg_error"></div>
+    </div>
+
+    <!-- RELOAD PAGE -->
+    <button id="reset">RESET</button>
+
     <script src="script.js" async defer></script>
   </body>
 </html>
