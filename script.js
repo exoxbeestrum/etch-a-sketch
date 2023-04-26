@@ -177,9 +177,9 @@ let randInsult = (items) => {
 };
 /* END RANDOM INSULT GENERATOR --*/
 
-/*-------------------------*/
-/* ERROR MESSAGE SCROLLER  */
-/*-------------------------*/
+/*--------------------------*/
+/* ERROR MESSAGE SCROLLER   */
+/*--------------------------*/
 let msgScroller = () => {
   const elem = document.getElementById("msg_error");
   const elemHeight = elem.offsetHeight;
@@ -277,9 +277,9 @@ let dragElement = (target, handle) => {
 };
 /* END DRAGGABLE GREEN OPTIONS FORM --*/
 
-/*------------------------*/
-/* FUNCTION buildGrid();  */
-/*------------------------*/
+/*-------------------------*/
+/* FUNCTION buildGrid();   */
+/*-------------------------*/
 let buildGrid = (e) => {
   let winH = window.innerHeight;
   let winW = window.innerWidth;
@@ -312,9 +312,9 @@ let buildGrid = (e) => {
 };
 /* END FUNCTION buildGrid(); --*/
 
-/*-------------------------------*/
-/* ETCH-A-SKETCH ()ON MOUSEOVER  */
-/*-------------------------------*/
+/*--------------------------------*/
+/* ETCH-A-SKETCH ()ON MOUSEOVER   */
+/*--------------------------------*/
 let etchSketch = () => {
   console.log("OVER");
   document.querySelectorAll(".column").forEach((item, index) => {
@@ -377,9 +377,9 @@ let etchSketch = () => {
 };
 /* END ETCH-A-SKETCH ON MOUSEOVER --*/
 
-/*---------------*/
-/* RESET BUTTON  */
-/*---------------*/
+/*----------------*/
+/* RESET BUTTON   */
+/*----------------*/
 let resetButton = () => {
   const resetButton = document.getElementById("reset");
   resetButton.addEventListener("mousedown", (event) => {
@@ -388,9 +388,9 @@ let resetButton = () => {
 };
 /* END RESET BUTTON --*/
 
-/*-----------------*/
-/* LOAD IT ALL UP  */
-/*-----------------*/
+/*------------------*/
+/* LOAD IT ALL UP   */
+/*------------------*/
 window.onload = () => {
   buildGrid(16); //BUILD THE GRID
   dragElement("msg_options", "msg_drag"); //DRAG THE SCORECARD
