@@ -11,6 +11,15 @@ body {
   padding: 0;
 }
 
+#blanket {
+  background: #000;
+  height: 100vh;
+  opacity: 0.9;
+  position: absolute;
+  width: 100vw;
+  z-index: 50;
+}
+
 #container {
   background: #000 url("imgs/bg_pattern.gif") top center repeat;
   display: grid;
@@ -59,6 +68,7 @@ body {
   height: 123px;
   position: absolute;
   width: 348px;
+  z-index: 100;
 }
 
 #msg_bubble {
@@ -113,21 +123,45 @@ button {
   border-bottom-right-radius: 12px;
   box-shadow: 3px 3px 6px rgb(0, 0, 0, 0.25);
   color: #000;
-  font-style: normal;
+  font-size: 88%;
+  font-style: italic;
   left: 21px;
+  line-height: 1.5;
   min-height: 44px;
   margin-left: 10px;
-  padding: 12px 12px 0;
+  padding: 18px 12px 12px;
   position: relative;
-  top: 0;
+  top: -72px;
   width: 286px;
   z-index: 0;
 }
 /* END GRID SIZE BOX --*/
 
 #reset {
-  background: #f00;
+  align-items: center;
+  background: #000;
+  border-radius: 2em 1em 4em / 0.5em 3em;
+  border: 3px solid #fff;
+  box-shadow: 3px 3px 6px rgb(0, 0, 0, 0.75);
+  cursor: grab;
+  display: grid;
+  justify-content: center;
+  left: 90%;
+  top: 90%;
   position: absolute;
-  top: 0;
-  left: 0;
+  height: 56px;
+  width: 56px;
+}
+.color {
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+  -webkit-transition: all 1s ease;
+}
+
+.color:hover {
+  filter: grayscale(0%);
+  filter: gray;
+  -webkit-filter: grayscale(0%);
+  filter: none;
+  transition: 1s ease;
 }
