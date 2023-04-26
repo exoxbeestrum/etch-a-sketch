@@ -1,11 +1,9 @@
-/* Last updated: 4/25/2023   */
+/* Last updated: 4/26/2023   */
 
 /*------------*/
 /* TASK LIST  */
 /*------------*
-+ Style Grid Size box
-+ Incorporate Grid Choice to buildGrid()
-+ Reset Button: Make it make sense
++ Fix message scroll padding-bottom
 
 
 /*-----------------------------------------*/
@@ -66,9 +64,9 @@ let optionsBox = () => {
 };
 /* END CHOOSE GRID SIZE --*/
 
-/*--------------------------------*/
-/* GREEN OPTIONS FORM EVALUATOR   */
-/*--------------------------------*/
+/*-------------------------------------*/
+/* CHOOSE-A-GRID-SIZE FORM EVALUATOR   */
+/*-------------------------------------*/
 let evalForm = (text, target, error) => {
   //IF NOT A NUMBER
   if (isNaN(text) && text !== error) {
@@ -115,11 +113,16 @@ let evalForm = (text, target, error) => {
       msgScroller();
     } else {
       //INPUT PASSES VALIDATION
-      console.log("success: " + text);
+      console.log("success: building grid");
+      fadeIn(5, "blanket", 9, 0);
+      fadeIn(10, "msg_options", 9, 0);
+      text = +text;
+      buildGrid(text);
+      etchSketch();
     }
   }
 };
-/* END GREEN OPTIONS FORM EVALUATOR --*/
+/* END CHOOSE-A-GRID-SIZE FORM EVALUATOR --*/
 
 /*---------------------------*/
 /* RANDOM INSULT GENERATOR   */
@@ -185,13 +188,15 @@ let msgScroller = () => {
   const elemHeight = elem.offsetHeight;
   const speed = 5;
   const pause = 1500;
+  let initPos = 10;
 
   //SCROLL MESSAGE DOWN
   let scrollDown = () => {
     document.getElementById("submit").disabled = true; //DISABLE SUBMIT BUTTON
     let i = elemHeight;
+    console.log("ELEMHEIGHT: " + elemHeight);
     let initFirst = setInterval(function () {
-      if (i === 0) {
+      if (i === initPos) {
         clearInterval(initFirst);
         scrollPause(); //FIRE scrollPause() AFTER LOOPING
       } else {
@@ -210,7 +215,7 @@ let msgScroller = () => {
 
   //SCROLL MESSAGE UP
   let scrollUp = () => {
-    let i = 0;
+    let i = -initPos;
     let initThird = setInterval(function () {
       if (i === -elemHeight - 1) {
         clearInterval(initThird); //END scrollUp() AFTER LOOPING
@@ -227,7 +232,7 @@ let msgScroller = () => {
 /* END ERROR MESSAGE SCROLLER  */
 
 /*--------------------------------*/
-/* DRAGGABLE GREEN OPTIONS FORM   */
+/* DRAGGABLE CHOOSE-A-GRID FORM   */
 /*--------------------------------*/
 let dragElement = (target, handle) => {
   let elem = document.getElementById(target);
@@ -275,7 +280,7 @@ let dragElement = (target, handle) => {
     elem.onmousedown = dragMouseDown;
   }
 };
-/* END DRAGGABLE GREEN OPTIONS FORM --*/
+/* END DRAGGABLE CHOOSE-A-GRID FORM --*/
 
 /*-------------------------*/
 /* FUNCTION buildGrid();   */
@@ -312,11 +317,75 @@ let buildGrid = (e) => {
 };
 /* END FUNCTION buildGrid(); --*/
 
+/*------------------*/
+/* FADE-IN EFFECT   */
+/*------------------*/
+//"FADES IN GRID", FADES OUT OPTION BOX/BLANKET OVERLAY
+let fadeIn = (speed, target, opacity, maxFade, remove) => {
+  const elem = document.getElementById(target);
+  let x = maxFade;
+  let i = opacity + "0";
+
+  i = +i; //CONVERT STRING TO NUMBER
+  elem.style.opacity = `0.${i}`;
+
+  let fadeInFX = setInterval(function () {
+    if (i <= maxFade) {
+      if (remove === true) {
+        elem.remove();
+      }
+      clearInterval(fadeInFX);
+      elem.style.zIndex = "-1";
+    } else {
+      if (i <= 9) {
+        elem.style.opacity = `0.0${i}`;
+      }
+      if (i >= 10) {
+        elem.style.opacity = `0.${i}`;
+      }
+    }
+    i = i - 1;
+  }, speed);
+};
+/* END FADE-IN EFFECT --*/
+
+/*------------------*/
+/* FADE-OUT EFFECT  */
+/*------------------*/
+//"FADES OUT GRID", FADES-IN OPTION BOX/BLANKET OVERLAY
+let fadeout = (speed, target, initOpacity, maxOpacity, zindex, reload) => {
+  const elem = document.getElementById(target);
+  let i = initOpacity + "0";
+  i = +i; //CONVERT STRING TO NUMBER
+  elem.style.opacity = `0.${i}`;
+  elem.style.zIndex = zindex;
+
+  let fadeoutFX = setInterval(function () {
+    if (i >= maxOpacity) {
+      clearInterval(fadeoutFX);
+      if (reload === true) {
+        //RELOAD PAGE AFTER FADE-OUT
+        let reloadPage = setTimeout(function () {
+          location.reload();
+        }, 250);
+      }
+    } else {
+      if (i <= 9) {
+        elem.style.opacity = `0.0${i}`;
+      }
+      if (i >= 10) {
+        elem.style.opacity = `0.${i}`;
+      }
+    }
+    i = i + 1;
+  }, speed);
+};
+/* END FADE-OUT EFFECT --*/
+
 /*--------------------------------*/
 /* ETCH-A-SKETCH ()ON MOUSEOVER   */
 /*--------------------------------*/
 let etchSketch = () => {
-  console.log("OVER");
   document.querySelectorAll(".column").forEach((item, index) => {
     let i = 0;
     item.addEventListener("mouseover", () => {
@@ -383,7 +452,9 @@ let etchSketch = () => {
 let resetButton = () => {
   const resetButton = document.getElementById("reset");
   resetButton.addEventListener("mousedown", (event) => {
-    location.reload(); //RELOAD DOCUMENT
+    fadeIn(5, "gridbox", 9, 0, true);
+    fadeout(10, "blanket", 0, 90, 50, true);
+    //location.reload(); //RELOAD DOCUMENT
   });
 };
 /* END RESET BUTTON --*/
@@ -392,10 +463,9 @@ let resetButton = () => {
 /* LOAD IT ALL UP   */
 /*------------------*/
 window.onload = () => {
-  buildGrid(16); //BUILD THE GRID
   dragElement("msg_options", "msg_drag"); //DRAG THE SCORECARD
-  etchSketch();
   optionsBox();
   randoPlacement("msg_options");
   resetButton();
+  fadeout(10, "msg_options", 0, 99, 100, false);
 };
