@@ -44,12 +44,6 @@ body {
   justify-content: center;
 }
 
-#gridbox > .row:first-child {
-}
-
-.row > .column:first-child {
-}
-
 .column {
   background: #000;
   cursor: pointer;
@@ -157,6 +151,7 @@ button {
   filter: grayscale(100%);
   -webkit-filter: grayscale(100%);
   -webkit-transition: all 1s ease;
+  transition: 1s ease;
 }
 
 .color:hover {
