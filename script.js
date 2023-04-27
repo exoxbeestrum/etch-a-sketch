@@ -453,6 +453,22 @@ let resetButton = () => {
 };
 /* END RESET BUTTON --*/
 
+/*----------------------*/
+/* SCROLLING TITLE BAR  */
+/*----------------------*/
+let scrollingTitle = (separator, speed, customTitle) => {
+  let a = separator; //TITLE REPEAT SEPARATOR
+  let b = speed; //SCROLL SPEED (MS)
+  let c = customTitle; //TITLE TEXT
+  let title = (c || document.title) + " " + (a || " ") + " ";
+
+  setInterval(function () {
+    title = title.substring(1) + title.charAt(0);
+    document.title = title;
+  }, b || 150);
+};
+/* END SCROLLING TITLE BAR  */
+
 /*------------------*/
 /* LOAD IT ALL UP   */
 /*------------------*/
@@ -462,4 +478,5 @@ window.onload = () => {
   optionsBox();
   randoPlacement("msg_options");
   resetButton();
+  scrollingTitle(" | ", 150);
 };
