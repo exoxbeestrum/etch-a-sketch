@@ -121,22 +121,23 @@ button {
   background: #fff;
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
-  box-shadow: 3px 3px 6px rgb(0, 0, 0, 0.25);
   color: #000;
   font-size: 88%;
   font-style: italic;
   left: 21px;
-  line-height: 1.5;
-  min-height: 44px;
+  line-height: 1.25;
   margin-left: 10px;
-  padding: 18px 12px 12px;
+  padding: 18px 12px 12px 12px;
   position: relative;
-  top: -72px;
+  top: -50px;
   width: 286px;
   z-index: 0;
 }
 /* END GRID SIZE BOX --*/
 
+/*----------------*/
+/* RESET BUTTON   */
+/*----------------*/
 #reset {
   align-items: center;
   background: #000;
@@ -165,3 +166,4 @@ button {
   filter: none;
   transition: 1s ease;
 }
+/* END RESET BUTTON   */
