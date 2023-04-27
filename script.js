@@ -1,10 +1,4 @@
-/* Last updated: 4/26/2023   */
-
-/*------------*/
-/* TASK LIST  */
-/*------------*
-+ Fix message scroll padding-bottom
-
+/* Last updated: 4/27/2023   */
 
 /*-----------------------------------------*/
 /* RANDOM PLACEMENT OF "Choose a Number"   */
@@ -20,7 +14,8 @@ let randoPlacement = (target) => {
 
   //AVOID PLACEMENT BELOW CLIENT WINDOW
   if (randoTop >= winH - divH) {
-    randoTop = winH - divH;
+    let randoBumper = Math.floor(Math.random() * (216 - 72 + 1) + 72); //ADDS BOTTOM PADDING TO PLACEMENT
+    randoTop = winH - divH - randoBumper;
   }
   //AVOID PLACEMENT TO THE LEFT OF CLIENT WINDOW
   if (randoLeft >= winW - divW) {
@@ -162,7 +157,7 @@ const msgArray = [
   "moron",
   "nincompoop",
   "nitwit",
-  "numskull",
+  "numbskull",
   "oaf",
   "pinhead",
   "scatterbrain",
@@ -188,13 +183,12 @@ let msgScroller = () => {
   const elemHeight = elem.offsetHeight;
   const speed = 5;
   const pause = 1500;
-  let initPos = 10;
+  let initPos = 14;
 
   //SCROLL MESSAGE DOWN
   let scrollDown = () => {
     document.getElementById("submit").disabled = true; //DISABLE SUBMIT BUTTON
     let i = elemHeight;
-    console.log("ELEMHEIGHT: " + elemHeight);
     let initFirst = setInterval(function () {
       if (i === initPos) {
         clearInterval(initFirst);
@@ -464,8 +458,8 @@ let resetButton = () => {
 /*------------------*/
 window.onload = () => {
   dragElement("msg_options", "msg_drag"); //DRAG THE SCORECARD
+  fadeout(10, "msg_options", 0, 99, 100, false);
   optionsBox();
   randoPlacement("msg_options");
   resetButton();
-  fadeout(10, "msg_options", 0, 99, 100, false);
 };
